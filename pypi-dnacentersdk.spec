@@ -4,7 +4,7 @@
 #
 Name     : pypi-dnacentersdk
 Version  : 2.5.4
-Release  : 14
+Release  : 15
 URL      : https://files.pythonhosted.org/packages/5c/6f/9a7deb60243a1190a495bd16946cea014476741d590423a86f88489c2d5b/dnacentersdk-2.5.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/5c/6f/9a7deb60243a1190a495bd16946cea014476741d590423a86f88489c2d5b/dnacentersdk-2.5.4.tar.gz
 Summary  : Cisco DNA Center Platform SDK
@@ -65,7 +65,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1660335026
+export SOURCE_DATE_EPOCH=1666793131
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -75,13 +75,15 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
+pypi-dep-fix.py . requests-toolbelt
 python3 -m build --wheel --skip-dependency-check --no-isolation
 pushd ../buildavx2/
-export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx"
-export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx "
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+pypi-dep-fix.py . requests-toolbelt
 python3 -m build --wheel --skip-dependency-check --no-isolation
 
 popd
@@ -90,10 +92,11 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk
-cp %{_builddir}/dnacentersdk-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/68c1c8f9977a01635c49307640ad1d67af13280e
-cp %{_builddir}/dnacentersdk-%{version}/dnacentersdk/api/v2_2_2_3/licenses.py %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/a92b63d594a488ae48180359fb5711b74cde164f
-cp %{_builddir}/dnacentersdk-%{version}/dnacentersdk/api/v2_2_3_3/licenses.py %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/26f355b0a0ee6e71759018be90bb580af26aaf56
+cp %{_builddir}/dnacentersdk-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/68c1c8f9977a01635c49307640ad1d67af13280e || :
+cp %{_builddir}/dnacentersdk-%{version}/dnacentersdk/api/v2_2_2_3/licenses.py %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/a92b63d594a488ae48180359fb5711b74cde164f || :
+cp %{_builddir}/dnacentersdk-%{version}/dnacentersdk/api/v2_2_3_3/licenses.py %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/26f355b0a0ee6e71759018be90bb580af26aaf56 || :
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
+pypi-dep-fix.py %{buildroot} requests-toolbelt
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
