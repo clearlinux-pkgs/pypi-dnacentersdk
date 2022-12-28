@@ -4,7 +4,7 @@
 #
 Name     : pypi-dnacentersdk
 Version  : 2.5.5
-Release  : 16
+Release  : 17
 URL      : https://files.pythonhosted.org/packages/93/88/cbb6142af24151295f6f04b0a3da7c062bbb5f83f2518b3b33f7bd9d348a/dnacentersdk-2.5.5.tar.gz
 Source0  : https://files.pythonhosted.org/packages/93/88/cbb6142af24151295f6f04b0a3da7c062bbb5f83f2518b3b33f7bd9d348a/dnacentersdk-2.5.5.tar.gz
 Summary  : Cisco DNA Center Platform SDK
@@ -15,6 +15,9 @@ Requires: pypi-dnacentersdk-python = %{version}-%{release}
 Requires: pypi-dnacentersdk-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(poetry_core)
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 =============
@@ -65,15 +68,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1668733765
+export SOURCE_DATE_EPOCH=1672268877
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 pypi-dep-fix.py . requests-toolbelt
 python3 -m build --wheel --skip-dependency-check --no-isolation
