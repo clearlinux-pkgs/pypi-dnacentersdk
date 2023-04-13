@@ -1,5 +1,5 @@
 PKG_NAME := pypi-dnacentersdk
-URL = https://files.pythonhosted.org/packages/27/6e/75b0ce96914e2eb04b17e04367fb211b36d776f9667bbea386f4b87d7d3a/dnacentersdk-2.5.6.tar.gz
+URL = https://files.pythonhosted.org/packages/ec/ef/91067df1f064343432572023b2f6be7c570882dedf507dabbb122f4723f7/dnacentersdk-2.6.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
