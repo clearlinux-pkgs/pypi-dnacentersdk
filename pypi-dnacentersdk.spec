@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-dnacentersdk
-Version  : 2.6.2
-Release  : 21
-URL      : https://files.pythonhosted.org/packages/70/36/cb1fef6a52a6d6290fc98b3abae441c3359352cf74ca7a31a3504e3a5f50/dnacentersdk-2.6.2.tar.gz
-Source0  : https://files.pythonhosted.org/packages/70/36/cb1fef6a52a6d6290fc98b3abae441c3359352cf74ca7a31a3504e3a5f50/dnacentersdk-2.6.2.tar.gz
+Version  : 2.6.3
+Release  : 22
+URL      : https://files.pythonhosted.org/packages/32/7c/33d5ba3a14f941c6e49d996cf25783c0d21bf3ee733efcb0e8b4295dd1f9/dnacentersdk-2.6.3.tar.gz
+Source0  : https://files.pythonhosted.org/packages/32/7c/33d5ba3a14f941c6e49d996cf25783c0d21bf3ee733efcb0e8b4295dd1f9/dnacentersdk-2.6.3.tar.gz
 Summary  : Cisco DNA Center Platform SDK
 Group    : Development/Tools
 License  : MIT
@@ -58,10 +58,10 @@ python3 components for the pypi-dnacentersdk package.
 
 
 %prep
-%setup -q -n dnacentersdk-2.6.2
-cd %{_builddir}/dnacentersdk-2.6.2
+%setup -q -n dnacentersdk-2.6.3
+cd %{_builddir}/dnacentersdk-2.6.3
 pushd ..
-cp -a dnacentersdk-2.6.2 buildavx2
+cp -a dnacentersdk-2.6.3 buildavx2
 popd
 
 %build
@@ -69,15 +69,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682520267
+export SOURCE_DATE_EPOCH=1682972816
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export MAKEFLAGS=%{?_smp_mflags}
 pypi-dep-fix.py . requests-toolbelt
 python3 -m build --wheel --skip-dependency-check --no-isolation
