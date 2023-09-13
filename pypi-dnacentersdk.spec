@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-dnacentersdk
-Version  : 2.6.7
-Release  : 27
-URL      : https://files.pythonhosted.org/packages/98/f2/d3aceb618f9266a4c388f64637e0d788c7f40cb5b47976c84fea4e88417a/dnacentersdk-2.6.7.tar.gz
-Source0  : https://files.pythonhosted.org/packages/98/f2/d3aceb618f9266a4c388f64637e0d788c7f40cb5b47976c84fea4e88417a/dnacentersdk-2.6.7.tar.gz
+Version  : 2.6.8
+Release  : 28
+URL      : https://files.pythonhosted.org/packages/a7/de/42ca5d7d915329f383eafd6107bcc39dbb325f622d5a8a46fc4ca034b95f/dnacentersdk-2.6.8.tar.gz
+Source0  : https://files.pythonhosted.org/packages/a7/de/42ca5d7d915329f383eafd6107bcc39dbb325f622d5a8a46fc4ca034b95f/dnacentersdk-2.6.8.tar.gz
 Summary  : Cisco DNA Center Platform SDK
 Group    : Development/Tools
 License  : MIT
@@ -58,10 +58,10 @@ python3 components for the pypi-dnacentersdk package.
 
 
 %prep
-%setup -q -n dnacentersdk-2.6.7
-cd %{_builddir}/dnacentersdk-2.6.7
+%setup -q -n dnacentersdk-2.6.8
+cd %{_builddir}/dnacentersdk-2.6.8
 pushd ..
-cp -a dnacentersdk-2.6.7 buildavx2
+cp -a dnacentersdk-2.6.8 buildavx2
 popd
 
 %build
@@ -69,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1693253205
+export SOURCE_DATE_EPOCH=1694621016
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
