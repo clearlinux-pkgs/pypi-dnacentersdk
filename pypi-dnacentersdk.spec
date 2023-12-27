@@ -7,7 +7,7 @@
 #
 Name     : pypi-dnacentersdk
 Version  : 2.6.10
-Release  : 31
+Release  : 32
 URL      : https://files.pythonhosted.org/packages/a1/bf/c69198fc3b4298491fb9a021ec1978ed12533633c7d110c432ce500e2ede/dnacentersdk-2.6.10.tar.gz
 Source0  : https://files.pythonhosted.org/packages/a1/bf/c69198fc3b4298491fb9a021ec1978ed12533633c7d110c432ce500e2ede/dnacentersdk-2.6.10.tar.gz
 Summary  : Cisco DNA Center Platform SDK
