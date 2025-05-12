@@ -6,10 +6,10 @@
 # autospec commit: 9594167
 #
 Name     : pypi-dnacentersdk
-Version  : 2.8.14
-Release  : 56
-URL      : https://files.pythonhosted.org/packages/7d/f0/b7eefd421bc7f6416096d9a4a6a776715d442d080727909f60b0238ca939/dnacentersdk-2.8.14.tar.gz
-Source0  : https://files.pythonhosted.org/packages/7d/f0/b7eefd421bc7f6416096d9a4a6a776715d442d080727909f60b0238ca939/dnacentersdk-2.8.14.tar.gz
+Version  : 2.9.0
+Release  : 57
+URL      : https://files.pythonhosted.org/packages/8d/07/f69d7735e468ba98d399c31f8735a2ca45db478f8eb5436b1407d2ff9fdd/dnacentersdk-2.9.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/8d/07/f69d7735e468ba98d399c31f8735a2ca45db478f8eb5436b1407d2ff9fdd/dnacentersdk-2.9.0.tar.gz
 Summary  : Cisco DNA Center Platform SDK
 Group    : Development/Tools
 License  : MIT
@@ -59,10 +59,10 @@ python3 components for the pypi-dnacentersdk package.
 
 
 %prep
-%setup -q -n dnacentersdk-2.8.14
-cd %{_builddir}/dnacentersdk-2.8.14
+%setup -q -n dnacentersdk-2.9.0
+cd %{_builddir}/dnacentersdk-2.9.0
 pushd ..
-cp -a dnacentersdk-2.8.14 buildavx2
+cp -a dnacentersdk-2.9.0 buildavx2
 popd
 
 %build
@@ -70,7 +70,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1746540799
+export SOURCE_DATE_EPOCH=1747063765
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -123,9 +123,6 @@ export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk
 cp %{_builddir}/dnacentersdk-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/68c1c8f9977a01635c49307640ad1d67af13280e || :
-cp %{_builddir}/dnacentersdk-%{version}/dnacentersdk/api/v2_2_2_3/licenses.py %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/ed481878014990d49f85c060abba07d1b2c914a0 || :
-cp %{_builddir}/dnacentersdk-%{version}/dnacentersdk/api/v2_2_3_3/licenses.py %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/7b38b4ecffbfdd8e8bab77873846d33c73f7ba5b || :
-cp %{_builddir}/dnacentersdk-%{version}/dnacentersdk/api/v2_3_3_0/licenses.py %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/390ea888539e8f61c24728d3262841728f3c6b98 || :
 cp %{_builddir}/dnacentersdk-%{version}/dnacentersdk/api/v2_3_5_3/licenses.py %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/5146353b417266f0ac3a94db170ebc11ff17d738 || :
 cp %{_builddir}/dnacentersdk-%{version}/dnacentersdk/api/v2_3_7_6/licenses.py %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/f2d07c171aa78e504fb43d24775dd518d2ef4634 || :
 cp %{_builddir}/dnacentersdk-%{version}/dnacentersdk/api/v2_3_7_9/licenses.py %{buildroot}/usr/share/package-licenses/pypi-dnacentersdk/44aa22fa1b25c783bc0532b7407e75835b86e272 || :
@@ -151,12 +148,9 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/pypi-dnacentersdk/390ea888539e8f61c24728d3262841728f3c6b98
 /usr/share/package-licenses/pypi-dnacentersdk/44aa22fa1b25c783bc0532b7407e75835b86e272
 /usr/share/package-licenses/pypi-dnacentersdk/5146353b417266f0ac3a94db170ebc11ff17d738
 /usr/share/package-licenses/pypi-dnacentersdk/68c1c8f9977a01635c49307640ad1d67af13280e
-/usr/share/package-licenses/pypi-dnacentersdk/7b38b4ecffbfdd8e8bab77873846d33c73f7ba5b
-/usr/share/package-licenses/pypi-dnacentersdk/ed481878014990d49f85c060abba07d1b2c914a0
 /usr/share/package-licenses/pypi-dnacentersdk/f2d07c171aa78e504fb43d24775dd518d2ef4634
 
 %files python
